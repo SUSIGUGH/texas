@@ -1,0 +1,9 @@
+sudo docker build -t phphttp .
+sudo docker image tag phphttp susigugh/phphttp:0.1
+docker push susigugh/phphttp:0.1
+
+
+mysql -uroot -pmysql100
+create user 'test'@'%' identified by 'test123';
+grant all on *.* to 'test'@'%';
+flush privileges;
