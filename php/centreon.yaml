@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: centreon-deployment
+  labels:
+    app: centreon
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: centreon
+  template:
+    metadata:
+      labels:
+        app: centreon
+    spec:
+      containers:
+      - name: centreon
+        image: manuvaldi/centreon-docker
+      securityContext:
+        runAsUser: 0
