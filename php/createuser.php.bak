@@ -1,0 +1,33 @@
+<?php
+$servername = "mysql01-srv";
+$username = "root";
+$password = "mysql100";
+$useremail = $_POST['useremail'];
+$userpass = $_POST['userpasswd'];
+echo "$useremail";
+//phpinfo();
+// Create connection
+$conn = mysqli_connect($servername, $username, $password,"test");
+// Check connection
+if (!$conn) {
+  die("Connection failed: " . mysqli_connect_error());
+}
+echo "Connected successfully";
+$sql = "insert into test.userinfo values('$useremail','$userpass')";
+//$result = $conn->query($sql);
+echo "I am here";
+if ($conn->query($sql) === TRUE) {
+  echo "New record created successfully";
+} else {
+  echo "Error: " . $sql . "<br>" . $conn->error;
+}
+//if ($result->num_rows > 0) {
+ //output data of each row
+ //while($row = $result->fetch_assoc()) {
+ // echo  $row["name1"] ;
+//}
+//} else {
+//echo "0 results";
+//}
+$conn->close();
+?>
